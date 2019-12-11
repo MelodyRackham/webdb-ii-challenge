@@ -1,7 +1,6 @@
 const express = require('express');
-const knex = require('knex');
-const knexConfig = require('../knexfile');
-const db = knex(knexConfig.development);
+const db = require('../data/dbConfig');
+
 const router = express.Router();
 
 router.get('/', (req, res) => {
@@ -36,7 +35,7 @@ router.get('/:id', (req, res) => {
     .where('id', '=', req.params.id)
     .first()
     .then(car => res.status(200).json(car))
-    .catch(err => res.status(500).json({ message: 'Failed to get car' }));
+    .catch(err => res.status(500).json({ message: 'Failed to get car with that ID' }));
 });
 
 router.put('/:id', (req, res) => {
