@@ -38,6 +38,7 @@ router.get('/:id', (req, res) => {
     .catch(err => res.status(500).json({ message: 'Failed to get car with that ID' }));
 });
 
+// STRETCH
 router.put('/:id', (req, res) => {
   db('cars')
     .where({ id: req.params.id })
